@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styless.css">
+</head>
+<body>
+    <div class="card">
+        <div class="search">
+            <input type="text" placeholder="Enter City Name" spellcheck="false" id="inp">
+            <button>
+                <img src="/weather App/content/search.png" alt="srh">
+            </button>
+        </div>
+        <div class="weather">
+            <img src="/weather App/content/cloudy.png" alt="rain" class="weather-icon" width="200">
+            <h1 class="temp">22°C </h1>
+            <h2 class="city">New York</h2>
+            <div class="details">
+                <div class="col">
+                    <img src="/weather App/content/humidity.png" alt="humidity">
+                    <div>
+                        <p class="humidity">50%</p>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <img src="/weather App/content/umbrella.png" alt="wind">
+                    <div>
+                        <p class="wind">15 km/hr</p>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+   <script>
+
+    const apiKey = '8b6e3274e3c74899b9a80315250807';
+
+    async function checkWeather(city) {
+        try {
+            const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=yes`);
+            const data = await response.json();
+
+            document.querySelector(".city").innerHTML = data.location.name;
+            document.querySelector(".temp").innerHTML = data.current.temp_c + "°C";
+            document.querySelector(".humidity").innerHTML = data.current.humidity + "%";
+            document.querySelector(".wind").innerHTML = data.current.wind_kph + " km/hr";
+
+        } catch (error) {
+            console.error("Failed to fetch weather data:", error);
+            document.querySelector(".city").innerHTML = "City not found";
+            document.querySelector(".temp").innerHTML = "--°C";
+            document.querySelector(".humidity").innerHTML = "--%";
+            document.querySelector(".wind").innerHTML = "-- km/hr";
+        }
+    }
+
+    document.querySelector("button").addEventListener("click", () => {
+        const city = document.getElementById("inp").value.trim();
+        if (city !== "") {
+            checkWeather(city);
+        }
+    });
+
+    checkWeather("Srinagar");
+</script>
+
+</body>
+</html>
