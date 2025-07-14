@@ -1,0 +1,29 @@
+*{
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+}
+.container{
+    width: 500px;
+    height: 500px;
+}
+
+.grid{
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 10px solid rgb(202, 197, 197);
+    background-color: antiquewhite;
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.grid div{
+    font-size: 25px;
+    text-align: center;
+    font-family: monospace;
+    border: 1px solid black;
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+}
