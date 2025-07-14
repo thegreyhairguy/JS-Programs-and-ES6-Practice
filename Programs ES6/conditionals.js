@@ -24,7 +24,7 @@ true; // truthy
 //+++++++++++++++++++++ String Values
 "0"; // truthy
 'false'; // truthy
-function(){}; // truthy Empty function is truthy
+// function(){}; // truthy Empty function is truthy
 
 
 // if-else statement
